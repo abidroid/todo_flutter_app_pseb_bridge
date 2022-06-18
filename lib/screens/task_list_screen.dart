@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:todo_flutter_app_pseb_bridge/screens/add_task_screen.dart';
 import 'package:todo_flutter_app_pseb_bridge/screens/login_screen.dart';
 import 'package:todo_flutter_app_pseb_bridge/screens/profile_screen.dart';
+import 'package:todo_flutter_app_pseb_bridge/screens/update_task_screen.dart';
 import 'package:todo_flutter_app_pseb_bridge/util/utility.dart';
 
 class TaskListScreen extends StatefulWidget {
@@ -96,6 +97,9 @@ class _TaskListScreenState extends State<TaskListScreen> {
               return ListView.builder(
                   itemCount: snapshot.data!.docs.length,
                   itemBuilder: (context, index) {
+
+
+
                     return Container(
                       padding: const EdgeInsets.all(10),
                       margin: const EdgeInsets.only(bottom: 10),
@@ -120,7 +124,12 @@ class _TaskListScreenState extends State<TaskListScreen> {
                           Column(
                             children: [
                               IconButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+
+                                    Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                                      return UpdateTaskScreen(documentSnapshot: snapshot.data!.docs[index]);
+                                    }));
+                                  },
                                   icon: const Icon(
                                     Icons.edit,
                                     size: 20,

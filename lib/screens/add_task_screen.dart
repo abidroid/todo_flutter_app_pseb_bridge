@@ -56,12 +56,14 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
 
                 var taskRef = firestore.collection('tasks').doc(uid).collection('tasks').doc();
 
-                taskRef.set({
+               await taskRef.set({
                   'dt': dt,
                   'taskName': taskName,
                   'taskId': taskRef.id,
                 });
 
+                Fluttertoast.showToast(msg: 'Task Added');
+                Navigator.of(context).pop();
 
               }
 
